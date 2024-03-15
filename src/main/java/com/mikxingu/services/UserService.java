@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mikxingu.domain.User;
+import com.mikxingu.dto.UserDTO;
 import com.mikxingu.repositores.UserRepository;
 import com.mikxingu.services.exception.ObjectNotFoundException;
 
@@ -30,4 +31,11 @@ public class UserService {
 		return user.get();
 	}
 
+	public User insert(User obj) {
+		return userRepository.insert(obj);
+	}
+	
+	public User fromDTO(UserDTO objDTO) {
+		return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail());
+	}
 }
